@@ -4,8 +4,8 @@
   import path from 'path';
 
   export default defineConfig({
-    // Base URL para GitHub Pages - cambia 'Foro-514-Design-Overview' por el nombre exacto de tu repo
-    base: process.env.NODE_ENV === 'production' ? '/Foro-514-Design-Overview/' : '/',
+    // Base URL para GitHub Pages - debe coincidir con el nombre exacto de tu repositorio
+    base: process.env.NODE_ENV === 'production' ? '/foro/' : '/',
     plugins: [react()],
     resolve: {
       extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
