@@ -3,8 +3,8 @@ name: Deploy to GitHub Pages
 on:
   # Se ejecuta en cada push a la rama main
   push:
-    branches: ['main']
-  
+    branches: ["main"]
+
   # Permite ejecutar manualmente desde la pestaña Actions
   workflow_dispatch:
 
@@ -17,7 +17,7 @@ permissions:
 # Permite solo un despliegue concurrente, saltando las ejecuciones en cola entre la ejecución en progreso y la última en cola.
 # Sin embargo, NO cancela las ejecuciones en progreso ya que queremos permitir que estos despliegues de producción se completen.
 concurrency:
-  group: 'pages'
+  group: "pages"
   cancel-in-progress: false
 
 jobs:
@@ -27,27 +27,27 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        
+
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
-          
+          node-version: "20"
+
       - name: Install dependencies
         run: npm install
-        
+
       - name: Build
         run: npm run build
         env:
           NODE_ENV: production
-        
+
       - name: Setup Pages
         uses: actions/configure-pages@v4
-        
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './dist'
+          path: "./dist"
 
   # Deployment job
   deploy:
